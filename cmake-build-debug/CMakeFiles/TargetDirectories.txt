@@ -1,0 +1,3 @@
+C:/Users/ASUS/CLionProjects/Shudo/cmake-build-debug/CMakeFiles/Shudo.dir
+C:/Users/ASUS/CLionProjects/Shudo/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ASUS/CLionProjects/Shudo/cmake-build-debug/CMakeFiles/rebuild_cache.dir

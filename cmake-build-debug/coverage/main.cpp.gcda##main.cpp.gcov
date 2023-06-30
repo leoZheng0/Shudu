@@ -1,0 +1,1360 @@
+        -:    0:Source:C:/Users/ASUS/CLionProjects/Shudo/main.cpp
+        -:    0:Graph:C:\Users\ASUS\CLionProjects\Shudo\cmake-build-debug\CMakeFiles\Shudo.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\ASUS\CLionProjects\Shudo\cmake-build-debug\CMakeFiles\Shudo.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include <cstdlib>
+        -:    3:#include <ctime>
+        -:    4:#include <fstream>
+        -:    5:#include <vector>
+        -:    6:#include <cstring>
+        -:    7:#include <algorithm>
+        -:    8:#include <set>
+        -:    9:
+        -:   10:class SudokuGenerator {
+        -:   11:public:
+function _ZN15SudokuGeneratorC1Ev called 0 returned 0% blocks executed 0%
+    #####:   12:    SudokuGenerator() {
+    #####:   13:        srand(static_cast<unsigned>(time(0)));
+    %%%%%:   13-block  0
+call    0 never executed
+call    1 never executed
+    #####:   14:        generate();
+call    0 never executed
+    #####:   15:    }
+        -:   16:
+function _ZNK15SudokuGenerator5printEv called 0 returned 0% blocks executed 0%
+    #####:   17:    void print() const {
+    #####:   18:        for (int i = 0; i < 9; ++i) {
+    %%%%%:   18-block  0
+    %%%%%:   18-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:   19:            for (int j = 0; j < 9; ++j) {
+    %%%%%:   19-block  0
+    %%%%%:   19-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:   20:                std::cout << board[i][j] << ' ';
+    %%%%%:   20-block  0
+call    0 never executed
+call    1 never executed
+        -:   21:            }
+    #####:   22:            std::cout << std::endl;
+    %%%%%:   22-block  0
+call    0 never executed
+        -:   23:        }
+    #####:   24:    }
+        -:   25:    // Return a string representing the Sudoku board
+function _ZNK15SudokuGenerator9getStringB5cxx11Ev called 0 returned 0% blocks executed 0%
+    #####:   26:    std::string getString() const {
+    #####:   27:        std::string str;
+    %%%%%:   27-block  0
+call    0 never executed
+    #####:   28:        for (int i = 0; i < 9; ++i) {
+    %%%%%:   28-block  0
+    %%%%%:   28-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:   29:            for (int j = 0; j < 9; ++j) {
+    %%%%%:   29-block  0
+    %%%%%:   29-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:   30:                str += std::to_string(board[i][j]);
+    %%%%%:   30-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   30-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+    %%%%%:   30-block  2
+call    6 never executed
+    $$$$$:   30-block  3
+call    7 never executed
+    $$$$$:   30-block  4
+        -:   31:            }
+        -:   32:        }
+    #####:   33:        return str;
+    %%%%%:   33-block  0
+    %%%%%:   33-block  1
+    =====:   34:    }
+    $$$$$:   34-block  0
+call    0 never executed
+        -:   35:// Create a game with a certain difficulty
+function _ZN15SudokuGenerator10createGameEi called 0 returned 0% blocks executed 0%
+    #####:   36:void createGame(int difficulty) {
+        -:   37:    int numHoles;
+    #####:   38:    switch (difficulty) {
+    %%%%%:   38-block  0
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    #####:   39:        case 1:
+    #####:   40:            numHoles = 20;
+    #####:   41:            break;
+    %%%%%:   41-block  0
+    #####:   42:        case 2:
+    #####:   43:            numHoles = 30;
+    #####:   44:            break;
+    %%%%%:   44-block  0
+    #####:   45:        case 3:
+    #####:   46:            numHoles = 40;
+    #####:   47:            break;
+    %%%%%:   47-block  0
+    #####:   48:        default:
+    #####:   49:            numHoles = 20;
+    #####:   50:            break;
+    %%%%%:   50-block  0
+        -:   51:    }
+    #####:   52:    digHoles(numHoles);
+    %%%%%:   52-block  0
+call    0 never executed
+    #####:   53:}
+function _ZN15SudokuGenerator7isValidEiii called 0 returned 0% blocks executed 0%
+    #####:   54:    bool isValid(int row, int col, int num) {
+        -:   55:        // Check the number in the row
+    #####:   56:        for (int x = 0; x < 9; x++)
+    %%%%%:   56-block  0
+    %%%%%:   56-block  1
+    %%%%%:   56-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   57:            if (board[row][x] == num)
+    %%%%%:   57-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   58:                return false;
+    %%%%%:   58-block  0
+        -:   59:
+        -:   60:        // Check the number in the col
+    #####:   61:        for (int y = 0; y < 9; y++)
+    %%%%%:   61-block  0
+    %%%%%:   61-block  1
+    %%%%%:   61-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   62:            if (board[y][col] == num)
+    %%%%%:   62-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   63:                return false;
+    %%%%%:   63-block  0
+        -:   64:
+        -:   65:        // Check the number in the box
+    #####:   66:        int startRow = row - row % 3;
+    #####:   67:        int startCol = col - col % 3;
+    #####:   68:        for (int i = 0; i < 3; i++)
+    %%%%%:   68-block  0
+    %%%%%:   68-block  1
+    %%%%%:   68-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   69:            for (int j = 0; j < 3; j++)
+    %%%%%:   69-block  0
+    %%%%%:   69-block  1
+    %%%%%:   69-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   70:                if (board[i + startRow][j + startCol] == num)
+    %%%%%:   70-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   71:                    return false;
+    %%%%%:   71-block  0
+        -:   72:
+    #####:   73:        return true;
+    %%%%%:   73-block  0
+        -:   74:    }
+function _ZN15SudokuGenerator5solveEv called 0 returned 0% blocks executed 0%
+    #####:   75:    bool solve() {
+    #####:   76:        for (int row = 0; row < 9; row++) {
+    %%%%%:   76-block  0
+    %%%%%:   76-block  1
+    %%%%%:   76-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   77:            for (int col = 0; col < 9; col++) {
+    %%%%%:   77-block  0
+    %%%%%:   77-block  1
+    %%%%%:   77-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   78:                if (board[row][col] == 0) {
+    %%%%%:   78-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   79:                    std::vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    %%%%%:   79-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+    $$$$$:   79-block  1
+    $$$$$:   79-block  2
+    #####:   80:                    std::random_shuffle(nums.begin(), nums.end());  // Randomly shuffle the numbers for each cell
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+        -:   81:
+    #####:   82:                    for (int num : nums) {
+    %%%%%:   82-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:   82-block  1
+call    2 never executed
+    %%%%%:   82-block  2
+call    3 never executed
+    %%%%%:   82-block  3
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    #####:   83:                        if (isValid(row, col, num)) {
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   84:                            board[row][col] = num;
+    #####:   85:                            if (solve()) {
+    %%%%%:   85-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   85-block  1
+branch  3 never executed
+branch  4 never executed
+    #####:   86:                                return true;
+    %%%%%:   86-block  0
+        -:   87:                            }
+    #####:   88:                            board[row][col] = 0;
+    %%%%%:   88-block  0
+        -:   89:                        }
+        -:   90:                    }
+    #####:   91:                    return false;
+    %%%%%:   91-block  0
+    #####:   92:                }
+    %%%%%:   92-block  0
+call    0 never executed
+    $$$$$:   92-block  1
+call    1 never executed
+        -:   93:            }
+        -:   94:        }
+    #####:   95:        return true;
+    %%%%%:   95-block  0
+        -:   96:    }
+function _ZN15SudokuGenerator8generateEv called 0 returned 0% blocks executed 0%
+    #####:   97:    void generate() {
+    #####:   98:        for (int i = 0; i < 9; ++i) {
+    %%%%%:   98-block  0
+    %%%%%:   98-block  1
+    %%%%%:   98-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:   99:            for (int j = 0; j < 9; ++j) {
+    %%%%%:   99-block  0
+    %%%%%:   99-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  100:                board[i][j] = 0;
+    %%%%%:  100-block  0
+        -:  101:            }
+        -:  102:        }
+        -:  103:
+    #####:  104:        solve();
+    %%%%%:  104-block  0
+call    0 never executed
+    #####:  105:    }
+        -:  106:
+function _ZN15SudokuGenerator8getBoardEii called 0 returned 0% blocks executed 0%
+    #####:  107:    int getBoard(int i, int j) {
+    #####:  108:        return board[i][j];
+    %%%%%:  108-block  0
+        -:  109:    }
+        -:  110:
+function _ZNK15SudokuGenerator11writeToFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 0 returned 0% blocks executed 0%
+    #####:  111:    void writeToFile(const std::string& filePath) const {
+    #####:  112:        std::ofstream file(filePath);
+    %%%%%:  112-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  113:        if (file.is_open()) {
+    %%%%%:  113-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  113-block  1
+branch  3 never executed
+branch  4 never executed
+    #####:  114:            for (int i = 0; i < 9; ++i) {
+    %%%%%:  114-block  0
+    %%%%%:  114-block  1
+    %%%%%:  114-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:  115:                for (int j = 0; j < 9; ++j) {
+    %%%%%:  115-block  0
+    %%%%%:  115-block  1
+    %%%%%:  115-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:  116:                    if (board[i][j] == 0) {
+    %%%%%:  116-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  117:                        file << '$' << ' ';
+    %%%%%:  117-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  117-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:  118:                    } else {
+    #####:  119:                        file << board[i][j] << ' ';
+    %%%%%:  119-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  119-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:  120:                    }
+        -:  121:                }
+    #####:  122:                file << '\n';
+    %%%%%:  122-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  123:            }
+    #####:  124:            file.close();
+    %%%%%:  124-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  125:        } else {
+    #####:  126:            std::cout << "Unable to open file\n";
+    %%%%%:  126-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  127:        }
+    #####:  128:    }
+    %%%%%:  128-block  0
+call    0 never executed
+    $$$$$:  128-block  1
+call    1 never executed
+        -:  129:
+        -:  130:private:
+        -:  131:    int board[9][9]{};
+        -:  132:
+        -:  133:    // Create a game by digging holes in the completed board
+function _ZN15SudokuGenerator8digHolesEi called 0 returned 0% blocks executed 0%
+    #####:  134:    void digHoles(int numHoles) {
+    #####:  135:        int count = 0;
+    #####:  136:        while (count < numHoles) {
+    %%%%%:  136-block  0
+    %%%%%:  136-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  137:            int i = rand() % 9;
+    %%%%%:  137-block  0
+call    0 never executed
+    #####:  138:            int j = rand() % 9;
+call    0 never executed
+    #####:  139:            if (board[i][j] != 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  140:                board[i][j] = 0;
+    #####:  141:                count++;
+    %%%%%:  141-block  0
+        -:  142:            }
+        -:  143:        }
+    #####:  144:    }
+        -:  145:
+        -:  146:};
+        -:  147:class SudokuSolver {
+        -:  148:public:
+        -:  149:    SudokuSolver(int input[9][9]) {
+        -:  150:        for (int i = 0; i < 9; ++i) {
+        -:  151:            for (int j = 0; j < 9; ++j) {
+        -:  152:                board[i][j] = input[i][j];
+        -:  153:            }
+        -:  154:        }
+        -:  155:    }
+function _ZN12SudokuSolverC1ESt6vectorIS0_IiSaIiEESaIS2_EE called 1 returned 100% blocks executed 100%
+        1:  156:    SudokuSolver(std::vector<std::vector<int>> input) {
+       10:  157:        for (int i = 0; i < 9; ++i) {
+        1:  157-block  0
+        9:  157-block  1
+       10:  157-block  2
+branch  0 taken 9
+branch  1 taken 1 (fallthrough)
+       90:  158:            for (int j = 0; j < 9; ++j) {
+        9:  158-block  0
+       90:  158-block  1
+branch  0 taken 81
+branch  1 taken 9 (fallthrough)
+       81:  159:                board[i][j] = input[i][j];
+       81:  159-block  0
+call    0 returned 81
+call    1 returned 81
+        -:  160:            }
+        -:  161:        }
+        1:  162:    }
+        -:  163:
+function _ZN12SudokuSolver5solveEv called 849 returned 100% blocks executed 100%
+      849:  164:    bool solve() {
+     3540:  165:        for (int row = 0; row < 9; row++) {
+      849:  165-block  0
+     2691:  165-block  1
+     3540:  165-block  2
+branch  0 taken 3539
+branch  1 taken 1 (fallthrough)
+    32060:  166:            for (int col = 0; col < 9; col++) {
+     3539:  166-block  0
+    28521:  166-block  1
+    32060:  166-block  2
+branch  0 taken 29369
+branch  1 taken 2691 (fallthrough)
+    29369:  167:                if (board[row][col] == 0) {
+    29369:  167-block  0
+branch  0 taken 848 (fallthrough)
+branch  1 taken 28521
+     8300:  168:                    for (int num = 1; num <= 9; num++) {
+      848:  168-block  0
+     7452:  168-block  1
+     8300:  168-block  2
+branch  0 taken 7488
+branch  1 taken 812 (fallthrough)
+     7488:  169:                        if (isValid(row, col, num)) {
+     7488:  169-block  0
+call    0 returned 7488
+branch  1 taken 848 (fallthrough)
+branch  2 taken 6640
+      848:  170:                            board[row][col] = num;
+      848:  171:                            if (solve()) {
+      848:  171-block  0
+call    0 returned 848
+branch  1 taken 36 (fallthrough)
+branch  2 taken 812
+       36:  172:                                return true;
+       36:  172-block  0
+        -:  173:                            }
+      812:  174:                            board[row][col] = 0;
+      812:  174-block  0
+        -:  175:                        }
+        -:  176:                    }
+      812:  177:                    return false;
+      812:  177-block  0
+        -:  178:                }
+        -:  179:            }
+        -:  180:        }
+        1:  181:        return true;
+        1:  181-block  0
+        -:  182:    }
+        -:  183:
+function _ZNK12SudokuSolver5printEv called 1 returned 100% blocks executed 100%
+        1:  184:    void print() const {
+       10:  185:        for (int i = 0; i < 9; ++i) {
+        1:  185-block  0
+       10:  185-block  1
+branch  0 taken 9
+branch  1 taken 1 (fallthrough)
+       90:  186:            for (int j = 0; j < 9; ++j) {
+        9:  186-block  0
+       90:  186-block  1
+branch  0 taken 81
+branch  1 taken 9 (fallthrough)
+       81:  187:                std::cout << board[i][j] << ' ';
+       81:  187-block  0
+call    0 returned 81
+call    1 returned 81
+        -:  188:            }
+        9:  189:            std::cout << std::endl;
+        9:  189-block  0
+call    0 returned 9
+        -:  190:        }
+        1:  191:    }
+        -:  192:
+        -:  193:// Check if the given sudoku has a unique solution
+function _ZN12SudokuSolver17hasUniqueSolutionEv called 0 returned 0% blocks executed 0%
+    #####:  194:bool hasUniqueSolution() {
+    #####:  195:    int count = 0;
+    #####:  196:    for (int num = 1; num <= 9; num++) {
+    %%%%%:  196-block  0
+    %%%%%:  196-block  1
+    %%%%%:  196-block  2
+branch  0 never executed
+branch  1 never executed
+    #####:  197:        if (isValid(0, 0, num)) {
+    %%%%%:  197-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  198:            board[0][0] = num;
+    #####:  199:            if (solve()) {
+    %%%%%:  199-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  200:                count++;
+    #####:  201:                if (count > 1) {
+    %%%%%:  201-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  202:                    return false;
+    %%%%%:  202-block  0
+        -:  203:                }
+        -:  204:            }
+    #####:  205:            board[0][0] = 0;
+    %%%%%:  205-block  0
+        -:  206:        }
+        -:  207:    }
+    #####:  208:    return count == 1;
+    %%%%%:  208-block  0
+        -:  209:}
+        -:  210:
+        -:  211:private:
+        -:  212:    int board[9][9];
+        -:  213:
+function _ZN12SudokuSolver7isValidEiii called 7488 returned 100% blocks executed 100%
+     7488:  214:    bool isValid(int row, int col, int num) {
+        -:  215:        // Check the number in the row
+    48754:  216:        for (int x = 0; x < 9; x++)
+     7488:  216-block  0
+    41266:  216-block  1
+    48754:  216-block  2
+branch  0 taken 45500
+branch  1 taken 3254 (fallthrough)
+    45500:  217:            if (board[row][x] == num)
+    45500:  217-block  0
+branch  0 taken 4234 (fallthrough)
+branch  1 taken 41266
+     4234:  218:                return false;
+     4234:  218-block  0
+        -:  219:
+        -:  220:        // Check the number in the col
+    20567:  221:        for (int y = 0; y < 9; y++)
+     3254:  221-block  0
+    17313:  221-block  1
+    20567:  221-block  2
+branch  0 taken 19379
+branch  1 taken 1188 (fallthrough)
+    19379:  222:            if (board[y][col] == num)
+    19379:  222-block  0
+branch  0 taken 2066 (fallthrough)
+branch  1 taken 17313
+     2066:  223:                return false;
+     2066:  223-block  0
+        -:  224:
+        -:  225:        // Check the number in the box
+     1188:  226:        int startRow = row - row % 3;
+     1188:  227:        int startCol = col - col % 3;
+     3732:  228:        for (int i = 0; i < 3; i++)
+     1188:  228-block  0
+     2544:  228-block  1
+     3732:  228-block  2
+branch  0 taken 2884
+branch  1 taken 848 (fallthrough)
+    10790:  229:            for (int j = 0; j < 3; j++)
+     2884:  229-block  0
+     7906:  229-block  1
+    10790:  229-block  2
+branch  0 taken 8246
+branch  1 taken 2544 (fallthrough)
+     8246:  230:                if (board[i + startRow][j + startCol] == num)
+     8246:  230-block  0
+branch  0 taken 340 (fallthrough)
+branch  1 taken 7906
+      340:  231:                    return false;
+      340:  231-block  0
+        -:  232:
+      848:  233:        return true;
+      848:  233-block  0
+        -:  234:    }
+        -:  235:};
+        -:  236:
+function _Z18readSudokuFromFileRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 1 returned 100% blocks executed 64%
+        1:  237:std::vector<std::vector<int>> readSudokuFromFile(const std::string& filePath) {
+        2:  238:    std::vector<std::vector<int>> sudoku(9, std::vector<int>(9, 0));
+        1:  238-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0 (throw)
+        1:  238-block  1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+call    8 returned 1
+call    9 returned 1
+    $$$$$:  238-block  2
+    $$$$$:  238-block  3
+    $$$$$:  238-block  4
+    $$$$$:  238-block  5
+        1:  239:    std::ifstream file(filePath);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  240:
+        1:  241:    if (file.is_open()) {
+        1:  241-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  241-block  1
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+       10:  242:        for (int i = 0; i < 9; ++i) {
+        1:  242-block  0
+        9:  242-block  1
+       10:  242-block  2
+branch  0 taken 9
+branch  1 taken 1 (fallthrough)
+       90:  243:            for (int j = 0; j < 9; ++j) {
+        9:  243-block  0
+       81:  243-block  1
+       90:  243-block  2
+branch  0 taken 81
+branch  1 taken 9 (fallthrough)
+        -:  244:                char ch;
+       81:  245:                file >> ch;
+       81:  245-block  0
+call    0 returned 81
+branch  1 taken 81 (fallthrough)
+branch  2 taken 0 (throw)
+       81:  246:                if (ch == '$') {
+       81:  246-block  0
+branch  0 taken 36 (fallthrough)
+branch  1 taken 45
+       36:  247:                    sudoku[i][j] = 0;
+       36:  247-block  0
+call    0 returned 36
+call    1 returned 36
+        -:  248:                } else {
+       45:  249:                    sudoku[i][j] = ch - '0';
+       45:  249-block  0
+call    0 returned 45
+call    1 returned 45
+        -:  250:                }
+        -:  251:            }
+        -:  252:        }
+        1:  253:        file.close();
+        1:  253-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  254:    } else {
+    #####:  255:        std::cout << "Unable to open file\n";
+    %%%%%:  255-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  256:    }
+        -:  257:
+        2:  258:    return sudoku;
+        1:  258-block  0
+        1:  258-block  1
+        1:  259:}
+        1:  259-block  0
+call    0 returned 1
+    $$$$$:  259-block  1
+call    1 never executed
+    $$$$$:  259-block  2
+call    2 never executed
+function _Z17writeSudokuToFileRKSt6vectorIS_IiSaIiEESaIS1_EERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 0 returned 0% blocks executed 0%
+    #####:  260:void writeSudokuToFile(const std::vector<std::vector<int>>& sudoku, const std::string& filePath) {
+    #####:  261:    std::ofstream file(filePath);
+    %%%%%:  261-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  262:
+    #####:  263:    if (file.is_open()) {
+    %%%%%:  263-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  263-block  1
+branch  3 never executed
+branch  4 never executed
+    #####:  264:        for (const auto& row : sudoku) {
+    %%%%%:  264-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  264-block  1
+call    2 never executed
+    %%%%%:  264-block  2
+call    3 never executed
+    %%%%%:  264-block  3
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    #####:  265:            for (int num : row) {
+call    0 never executed
+call    1 never executed
+    %%%%%:  265-block  0
+call    2 never executed
+    %%%%%:  265-block  1
+call    3 never executed
+    %%%%%:  265-block  2
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    #####:  266:                if (num == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  267:                    file << '$' << ' ';
+    %%%%%:  267-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  267-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:  268:                } else {
+    #####:  269:                    file << num << ' ';
+    %%%%%:  269-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  269-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:  270:                }
+        -:  271:            }
+    #####:  272:            file << '\n';
+    %%%%%:  272-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  273:        }
+    #####:  274:        file.close();
+    %%%%%:  274-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  275:    } else {
+    #####:  276:        std::cout << "Unable to open file\n";
+    %%%%%:  276-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  277:    }
+    #####:  278:}
+    %%%%%:  278-block  0
+call    0 never executed
+    $$$$$:  278-block  1
+call    1 never executed
+        -:  279:
+function main called 1 returned 100% blocks executed 10%
+        1:  280:int main(int argc, char* argv[]) {
+        1:  281:    srand(time(NULL));
+        1:  281-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  281-block  1
+call    3 returned 1
+        1:  282:    std::set<std::string> generatedSudokus;
+call    0 returned 1
+        3:  283:    for (int i = 1; i < argc; ++i) {
+        2:  283-block  0
+        3:  283-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+       2*:  284:        if (strcmp(argv[i], "-c") == 0 && i + 1 < argc) {
+        2:  284-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 2
+    %%%%%:  284-block  1
+branch  2 never executed
+branch  3 never executed
+    #####:  285:            int num = std::stoi(argv[i + 1]);
+    %%%%%:  285-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+    %%%%%:  285-block  1
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    %%%%%:  285-block  2
+call    7 never executed
+call    8 never executed
+    $$$$$:  285-block  3
+call    9 never executed
+    $$$$$:  285-block  4
+    $$$$$:  285-block  5
+call   10 never executed
+    $$$$$:  285-block  6
+    #####:  286:            for (int j = 0; j < num; ++j) {
+    %%%%%:  286-block  0
+    %%%%%:  286-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  287:                SudokuGenerator generator;
+    %%%%%:  287-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  288:                // Generate a unique Sudoku endgame
+        -:  289:                while (true) {
+    #####:  290:                    generator.generate();
+    %%%%%:  290-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  291:                    if (generatedSudokus.insert(generator.getString()).second) {
+    %%%%%:  291-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  291-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+    %%%%%:  291-block  2
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+    $$$$$:  291-block  3
+call    9 never executed
+    $$$$$:  291-block  4
+    #####:  292:                        break;
+    %%%%%:  292-block  0
+        -:  293:                    }
+        -:  294:                }
+    #####:  295:                generator.writeToFile(R"(C:\Users\ASUS\CLionProjects\Shudo\EndGames\game_)" + std::to_string(j) + ".txt");
+    %%%%%:  295-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  295-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+    %%%%%:  295-block  2
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+    %%%%%:  295-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  295-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  295-block  5
+call   15 never executed
+    $$$$$:  295-block  6
+    $$$$$:  295-block  7
+call   16 never executed
+    $$$$$:  295-block  8
+    $$$$$:  295-block  9
+call   17 never executed
+    $$$$$:  295-block 10
+    #####:  296:                generator.print();
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  297:                std::cout << '\n';
+    %%%%%:  297-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  298:            }
+       2*:  299:        } else if (strcmp(argv[i], "-s") == 0 && i + 1 < argc) {
+    %%%%%:  299-block  0
+        2:  299-block  1
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:  299-block  2
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        2:  300:            std::vector<std::vector<int>> sudoku = readSudokuFromFile(argv[i + 1]);
+        1:  300-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  300-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+call    7 returned 1
+    $$$$$:  300-block  2
+    $$$$$:  300-block  3
+        1:  301:            SudokuSolver solver(sudoku);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  301-block  0
+call    3 returned 1
+call    4 returned 1
+        1:  302:            if (solver.solve()) {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  302-block  0
+branch  3 taken 1 (fallthrough)
+branch  4 taken 0
+        1:  303:                solver.print();
+        1:  303-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  304:            } else {
+    #####:  305:                std::cout << "No solution\n";
+    %%%%%:  305-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  306:            }
+       2*:  307:        }  else if (strcmp(argv[i], "-n") == 0 && i + 1 < argc) {
+        1:  307-block  0
+call    0 returned 1
+        1:  307-block  1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  307-block  2
+branch  3 never executed
+branch  4 never executed
+    $$$$$:  307-block  3
+call    5 never executed
+    #####:  308:            int numGames = std::stoi(argv[i + 1]);
+    %%%%%:  308-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+    %%%%%:  308-block  1
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    %%%%%:  308-block  2
+call    7 never executed
+call    8 never executed
+    $$$$$:  308-block  3
+call    9 never executed
+    $$$$$:  308-block  4
+    $$$$$:  308-block  5
+call   10 never executed
+    $$$$$:  308-block  6
+    #####:  309:            for (int j = 0; j < numGames; ++j) {
+    %%%%%:  309-block  0
+    %%%%%:  309-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  310:                SudokuGenerator generator;
+    %%%%%:  310-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  311:                generator.createGame(1);
+    %%%%%:  311-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  312:                while (true) {
+    #####:  313:                    std::vector<std::vector<int>> board(9, std::vector<int>(9, 0));
+    %%%%%:  313-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+    %%%%%:  313-block  1
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+call    8 never executed
+call    9 never executed
+    $$$$$:  313-block  2
+    $$$$$:  313-block  3
+    $$$$$:  313-block  4
+    $$$$$:  313-block  5
+    #####:  314:                    for (int i = 0; i < 9; ++i) {
+    %%%%%:  314-block  0
+    %%%%%:  314-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  315:                        for (int j = 0; j < 9; ++j) {
+    %%%%%:  315-block  0
+    %%%%%:  315-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  316:                            board[i][j] = generator.getBoard(i, j);
+    %%%%%:  316-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+        -:  317:                        }
+        -:  318:                    }
+    #####:  319:                    SudokuSolver solver(board);
+    %%%%%:  319-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  319-block  1
+call    3 never executed
+call    4 never executed
+    #####:  320:                    if (solver.hasUniqueSolution() && generatedSudokus.insert(generator.getString()).second) {
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  320-block  0
+branch  3 never executed
+branch  4 never executed
+    %%%%%:  320-block  1
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+    %%%%%:  320-block  2
+call    8 never executed
+branch  9 never executed
+branch 10 never executed
+    %%%%%:  320-block  3
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  320-block  4
+    %%%%%:  320-block  5
+    %%%%%:  320-block  6
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  320-block  7
+call   15 never executed
+    %%%%%:  320-block  8
+branch 16 never executed
+branch 17 never executed
+    $$$$$:  320-block  9
+    $$$$$:  320-block 10
+branch 18 never executed
+branch 19 never executed
+    $$$$$:  320-block 11
+call   20 never executed
+    $$$$$:  320-block 12
+    #####:  321:                        break;
+    %%%%%:  321-block  0
+        -:  322:                    }
+    #####:  323:                    generator.generate();
+    %%%%%:  323-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  324:                    generator.createGame(1);
+    %%%%%:  324-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  325:                }
+    %%%%%:  325-block  0
+    %%%%%:  325-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  325-block  2
+    $$$$$:  325-block  3
+call    3 never executed
+    #####:  326:                generator.writeToFile(R"(C:\Users\ASUS\CLionProjects\Shudo\Games\game_)" + std::to_string(j) + ".txt");
+    %%%%%:  326-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  326-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+    %%%%%:  326-block  2
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+    %%%%%:  326-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  326-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  326-block  5
+call   15 never executed
+    $$$$$:  326-block  6
+    $$$$$:  326-block  7
+call   16 never executed
+    $$$$$:  326-block  8
+    $$$$$:  326-block  9
+call   17 never executed
+    $$$$$:  326-block 10
+    #####:  327:                generator.print();
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  328:                std::cout << '\n';
+    %%%%%:  328-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  329:            }
+       1*:  330:        } else if (strcmp(argv[i], "-m") == 0 && i + 1 < argc) {
+    %%%%%:  330-block  0
+        1:  330-block  1
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  330-block  2
+branch  2 never executed
+branch  3 never executed
+    #####:  331:            if (i == 1 || strcmp(argv[i - 2], "-n") != 0) {
+    %%%%%:  331-block  0
+branch  0 never executed
+branch  1 never executed
+    %%%%%:  331-block  1
+branch  2 never executed
+branch  3 never executed
+    #####:  332:                std::cout << "The -m option cannot be used alone.\n";
+    %%%%%:  332-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  333:                return 1;
+    %%%%%:  333-block  0
+        -:  334:            }
+        -:  335:
+    #####:  336:            int difficulty = std::stoi(argv[i + 1]);
+    %%%%%:  336-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+    %%%%%:  336-block  1
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    %%%%%:  336-block  2
+call    7 never executed
+call    8 never executed
+    $$$$$:  336-block  3
+call    9 never executed
+    $$$$$:  336-block  4
+    $$$$$:  336-block  5
+call   10 never executed
+    $$$$$:  336-block  6
+    #####:  337:            int numGames = std::stoi(argv[i - 1]);
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+    %%%%%:  337-block  0
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+    %%%%%:  337-block  1
+call    7 never executed
+call    8 never executed
+    $$$$$:  337-block  2
+call    9 never executed
+    $$$$$:  337-block  3
+    $$$$$:  337-block  4
+call   10 never executed
+    $$$$$:  337-block  5
+    #####:  338:            for (int j = 0; j < numGames; ++j) {
+    %%%%%:  338-block  0
+    %%%%%:  338-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  339:                SudokuGenerator generator;
+    %%%%%:  339-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  340:                generator.createGame(difficulty);
+    %%%%%:  340-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  341:                while (true) {
+    #####:  342:                    std::vector<std::vector<int>> board(9, std::vector<int>(9, 0));
+    %%%%%:  342-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+    %%%%%:  342-block  1
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+call    8 never executed
+call    9 never executed
+    $$$$$:  342-block  2
+    $$$$$:  342-block  3
+    $$$$$:  342-block  4
+    $$$$$:  342-block  5
+    #####:  343:                    for (int i = 0; i < 9; ++i) {
+    %%%%%:  343-block  0
+    %%%%%:  343-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  344:                        for (int j = 0; j < 9; ++j) {
+    %%%%%:  344-block  0
+    %%%%%:  344-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  345:                            board[i][j] = generator.getBoard(i, j);
+    %%%%%:  345-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+        -:  346:                        }
+        -:  347:                    }
+    #####:  348:                    SudokuSolver solver(board);
+    %%%%%:  348-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  348-block  1
+call    3 never executed
+call    4 never executed
+    #####:  349:                    if (solver.hasUniqueSolution() && generatedSudokus.insert(generator.getString()).second) {
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  349-block  0
+branch  3 never executed
+branch  4 never executed
+    %%%%%:  349-block  1
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+    %%%%%:  349-block  2
+call    8 never executed
+branch  9 never executed
+branch 10 never executed
+    %%%%%:  349-block  3
+branch 11 never executed
+branch 12 never executed
+    %%%%%:  349-block  4
+    %%%%%:  349-block  5
+    %%%%%:  349-block  6
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  349-block  7
+call   15 never executed
+    %%%%%:  349-block  8
+branch 16 never executed
+branch 17 never executed
+    $$$$$:  349-block  9
+    $$$$$:  349-block 10
+branch 18 never executed
+branch 19 never executed
+    $$$$$:  349-block 11
+call   20 never executed
+    $$$$$:  349-block 12
+    #####:  350:                        break;
+    %%%%%:  350-block  0
+        -:  351:                    }
+    #####:  352:                    generator.generate();
+    %%%%%:  352-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  353:                    generator.createGame(difficulty);
+    %%%%%:  353-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  354:                }
+    %%%%%:  354-block  0
+    %%%%%:  354-block  1
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  354-block  2
+    $$$$$:  354-block  3
+call    3 never executed
+    #####:  355:                generator.writeToFile(R"(C:\Users\ASUS\CLionProjects\Shudo\Games\game_)" + std::to_string(j) + "_" + std::to_string(difficulty) + ".txt");
+    %%%%%:  355-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:  355-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+    %%%%%:  355-block  2
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+    %%%%%:  355-block  3
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+    %%%%%:  355-block  4
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+    %%%%%:  355-block  5
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+    %%%%%:  355-block  6
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+    %%%%%:  355-block  7
+call   21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 never executed
+call   26 never executed
+    $$$$$:  355-block  8
+call   27 never executed
+    $$$$$:  355-block  9
+    $$$$$:  355-block 10
+call   28 never executed
+    $$$$$:  355-block 11
+    $$$$$:  355-block 12
+call   29 never executed
+    $$$$$:  355-block 13
+    $$$$$:  355-block 14
+call   30 never executed
+    $$$$$:  355-block 15
+    $$$$$:  355-block 16
+call   31 never executed
+    $$$$$:  355-block 17
+    $$$$$:  355-block 18
+call   32 never executed
+    $$$$$:  355-block 19
+    #####:  356:                generator.print();
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  357:                std::cout << '\n';
+    %%%%%:  357-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  358:            }
+        -:  359:        }
+        -:  360:    }
+        -:  361:
+        1:  362:    return 0;
+        1:  362-block  0
+        1:  363:}
+        1:  363-block  0
+call    0 returned 1
+    $$$$$:  363-block  1
+call    1 never executed
